@@ -1,4 +1,4 @@
-﻿package com.example.book;
+package com.example.book;
 
 import android.content.Intent;
 import android.os.PersistableBundle;
@@ -85,21 +85,23 @@ public class ChatActivity extends AppCompatActivity implements GoogleApiClient.O
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-       // 로그인 안 된 경우
         if(mFirebaseUser == null){
+            // 로그인 안됬다면 메인으로
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return;
         } else{
+            // 로그인이 됬다면
             mUsername = mFirebaseUser.getDisplayName();
             if(mFirebaseUser.getPhotoUrl() != null){
-                mPhothUrl = mFirebaseUser.getPhotoUrl().toString(); 
+                mPhothUrl = mFirebaseUser.getPhotoUrl().toString(); // 경로
             }
         }
 
+        // 메세지 전체 내용 얻겠다.
         // 쿼리 수행 위치
         Query query = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
-      
+        // 쿼리의 결과를 ChatMessage.class 에 전달할것이다.
         // 옵션
         FirebaseRecyclerOptions<ChatMessage> options = new FirebaseRecyclerOptions.Builder<ChatMessage>()
                 .setQuery(query, ChatMessage.class)
@@ -195,7 +197,7 @@ public class ChatActivity extends AppCompatActivity implements GoogleApiClient.O
                 Auth.GoogleSignInApi.signOut(mGoogleApiClient);
                 mUsername = "";
                 startActivity(new Intent(this, MainActivity.class));
-                finish(); 
+                finish(); // 현재 액티비티
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

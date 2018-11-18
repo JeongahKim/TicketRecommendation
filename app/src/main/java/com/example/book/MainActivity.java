@@ -1,4 +1,4 @@
-﻿package com.example.book;
+package com.example.book;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // 구글
         mFirebaseAuth = FirebaseAuth.getInstance();
         // GoogleApiClient 초기화
+        // Google 로그인을 앱에 통합
+        // GoogleSignInOptions 개체를 구성할 때 requestIdToken을 호출
+        // GoogleApiClient 초기화
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -135,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Toast.makeText(this, "Google Play Service error.", Toast.LENGTH_SHORT).show();
     }
 
+    // 인텐트 실행되고, 사용자가 로그인 하던지
+    // 로그인 시도하고, 그 결과를 받는다.
     // 인증에 성공하거나 실패 처리
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -155,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     // 파이어 베이스와 연동
+    // 사용자가 정상적으로 로그인한 후에 GoogleSignInAccount 개체에서 ID 토큰을 가져와서
+    // Firebase 사용자 인증 정보로 교환하고 Firebase 사용자 인증 정보를 사용해 Firebase에 인증합니다.
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
 

@@ -1,4 +1,4 @@
-﻿package com.example.book;
+package com.example.book;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -120,6 +120,8 @@ public class DataActivity extends AppCompatActivity {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 ivPreview.setImageBitmap(bitmap);
 
+                //////////////// 해당 비트맵 카드 리스트에 표시한다.
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -138,15 +140,15 @@ public class DataActivity extends AppCompatActivity {
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
 
-            //파일명
+            //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
             String filename = formatter.format(now) + ".png";
-            //storage 주소와 폴더 파일명
+            //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://chatexam-17c90.appspot.com").child("images/" + filename);
-     
+            //올라가거라...
             storageRef.putFile(filePath)
-                    //성공
+                    //성공시
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -154,7 +156,7 @@ public class DataActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    //실패
+                    //실패시
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -162,13 +164,13 @@ public class DataActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    //진행
+                    //진행중
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests") 
+                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
                                     double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
-                            //dialog에 진행률을 퍼센트로 출력
+                            //dialog에 진행률을 퍼센트로 출력해 준다
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
                     });

@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "1063321048833",
+    "firebase_url": "https://chatexam-17c90.firebaseio.com",
+    "project_id": "chatexam-17c90",
+    "storage_bucket": "chatexam-17c90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063321048833:android:599a1c5bf3f46dee",
+        "android_client_info": {
+          "package_name": "com.example.book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063321048833-br263l67s2p5v3tgimcaq386u16sem1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb4p3medsmkleH53QY9XvAV6vAkbXUj5w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063321048833:android:7d56d52cf5804019",
+        "android_client_info": {
+          "package_name": "com.example.chatexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063321048833-iqqg772hkgivfb9775n5g9c6ih9obhtn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatexam",
+            "certificate_hash": "b4f04b736d8b0e6181ddccf7c3e43e9a7654324a"
+          }
+        },
+        {
+          "client_id": "1063321048833-br263l67s2p5v3tgimcaq386u16sem1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb4p3medsmkleH53QY9XvAV6vAkbXUj5w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063321048833-br263l67s2p5v3tgimcaq386u16sem1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
